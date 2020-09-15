@@ -18,7 +18,7 @@ print("Trying to connect to", SERV_IP + SERV_PORT)
 
 # create the client socket
 s = socket.socket()
-s.connect((SERV_IP, SERV_PORT))
+s.connect((SERV_IP, int(SERV_PORT)))
 print("!!!Connected to server!!!")  # if it is not displayed ==> OOF
 
 # Send them together, so that they do not get lost :)
