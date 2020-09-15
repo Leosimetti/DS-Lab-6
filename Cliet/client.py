@@ -1,11 +1,20 @@
-import os, socket
+import os
+import socket
+import sys
 
 # Unified constant
 BUFF = 1488
 
-name = "hi.txt"
+if len(sys.argv) != 4:
+    print("Wrong arguments!")
+    exit(228)
+
+name = sys.argv[1]
+SERV_IP = sys.argv[2]
+SERV_PORT = sys.argv[3]
+
 size = os.path.getsize(name)
-print("Trying to connect...")
+print("Trying to connect to", SERV_IP + SERV_PORT)
 
 # create the client socket
 s = socket.socket()
@@ -20,6 +29,7 @@ s.send(msg.encode())
 sas = 0
 pr_digit = '0'
 
+# Read/Send
 with open(name, "rb") as f:
     for i in range(size):
         snd = f.read(BUFF)
@@ -27,7 +37,7 @@ with open(name, "rb") as f:
 
             # To make output less annoying
             msg = str(round(sas / float(size) * 100))
-            if pr_digit != msg[0]:
+            if pr_digit != msg[0] and round(sas / float(size) * 100) > 9:
                 print(msg, " %")
                 pr_digit = msg[0]
 

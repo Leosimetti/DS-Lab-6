@@ -36,7 +36,7 @@ with open(filename, "wb") as f:
             # To make output less annoying
             msg = str(round(sas / float(filesize) * 100))
 
-            if pr_digit != msg[0]:
+            if pr_digit != msg[0] and round(sas / float(filesize) * 100) > 9:
                 print(msg, " %")
                 pr_digit = msg[0]
 
