@@ -14,7 +14,7 @@ SERV_IP = sys.argv[2]
 SERV_PORT = sys.argv[3]
 
 size = os.path.getsize(name)
-print("Trying to connect to", SERV_IP + SERV_PORT)
+print("Trying to connect to", SERV_IP + ":"+ SERV_PORT)
 
 # create the client socket
 s = socket.socket()
