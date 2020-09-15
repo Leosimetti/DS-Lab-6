@@ -6,7 +6,7 @@ BUFF = 1488
 # Creating the server
 s = socket.socket()
 s.bind(("0.0.0.0", 1488))
-s.listen()
+s.listen(2)  # Only accept to things: metadata + content
 print("Waiting for clients...")
 
 # Waiting for connection
@@ -16,6 +16,12 @@ print("!!!Client connected!!!")
 # Unpack the metadata
 received = client.recv(BUFF).decode()
 filename, filesize = received.split("?CON?")
+
+# Account for duplicates
+for _, _, files in os.walk("."):
+    for name in files:
+        if name == filename:
+            filename = filename + "_copy"
 
 # Make the data actually useful
 filename = os.path.basename(filename)
@@ -35,11 +41,11 @@ with open(filename, "wb") as f:
 
             # To make output less annoying
             msg = str(round(sas / float(filesize) * 100))
-
             if pr_digit != msg[0] and round(sas / float(filesize) * 100) > 9:
                 print(msg, " %")
                 pr_digit = msg[0]
 
+            # Log progress and write read data
             sas += BUFF
             f.write(rcv)
         else:
