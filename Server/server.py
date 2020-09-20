@@ -37,23 +37,26 @@ class ClientListener(Thread):
                 # If duplicate is located
                 if name == filename:
 
+                    # Find the original name
+                    base, ext = name.split(".")
+
                     # if it is already a copy
                     if "_copy" in name:
 
-                        # Find the original name
+                        # FInd name without _copy
                         base, _ = name.split("_copy")
 
                         # searching for numbers at the end
-                        temp = re.search(r'\d+$', name)
+                        temp = re.search(r'(\d+)[.]', name)
                         if temp:
-                            num = int(temp.group())
-                            filename = base + "_copy" + str(num+1)
+                            num = int(temp.group(1))
+                            filename = base + "_copy" + str(num+1) + '.' + ext
                         else:
-                            filename = filename + "1"
+                            filename = base + "_copy1" + '.' + ext
 
                     # if there are no copies
                     else:
-                        filename = filename + "_copy"
+                        filename = base + "_copy" + '.' + ext
 
 
 
