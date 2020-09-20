@@ -29,44 +29,36 @@ class ClientListener(Thread):
         print(f"[{self.name}] Starting transfer of {filename}")
 
         # Account for duplicates
-        # for _, _, files in os.walk("."):
-        #
-        #     # Going through all files in the directory
-        #     for name in files:
-        #
-        #         # If duplicate is located
-        #         if name == filename:
-        #
-        #             # Find the original name
-        #             base, ext = name.split(".")
-        #
-        #             # if it is already a copy
-        #             if "_copy" in name:
-        #
-        #                 # FInd name without _copy
-        #                 base, _ = name.split("_copy")
-        #
-        #                 # searching for numbers at the end
-        #                 temp = re.search(r'(\d+)[.]', name)
-        #                 if temp:
-        #                     num = int(temp.group(1))
-        #                     filename = base + "_copy" + str(num+1) + '.' + ext
-        #                 else:
-        #                     filename = base + "_copy1" + '.' + ext
-        #
-        #             # if there are no copies
-        #             else:
-        #                 filename = base + "_copy" + '.' + ext
+        for _, _, files in os.walk("."):
 
-        while (os.path.isfile(filename)):
-            name, ext = filename.split(".")
-            if "_copy" in name:
-                init_name, copy_ind = name.split("_copy")
-                copy_ind = int(copy_ind) + 1
-                name = init_name + "_copy" + str(copy_ind)
-            else:
-                name = name + "_copy1"
-            filename = name + "." + ext
+            # Going through all files in the directory
+            for name in files:
+
+                # If duplicate is located
+                if name == filename:
+
+                    # Find the original name
+                    base, ext = name.split(".")
+
+                    # if it is already a copy
+                    if "_copy" in name:
+
+                        # FInd name without _copy
+                        base, _ = name.split("_copy")
+
+                        # searching for numbers at the end
+                        temp = re.search(r'(\d+)[.]', name)
+                        if temp:
+                            num = int(temp.group(1))
+                            filename = base + "_copy" + str(num+1) + '.' + ext
+                        else:
+                            filename = base + "_copy1" + '.' + ext
+
+                    # if there are no copies
+                    else:
+                        filename = base + "_copy" + '.' + ext
+
+
 
         # Make the data actually useful
         filename = os.path.basename(filename)
