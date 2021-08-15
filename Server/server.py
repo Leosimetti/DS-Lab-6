@@ -3,7 +3,6 @@ from threading import Thread
 import os
 import re
 
-// @todo #224
 clients = []
 BUFF = 1488 # Unified constant
 
