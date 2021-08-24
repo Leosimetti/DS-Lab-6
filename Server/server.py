@@ -22,6 +22,8 @@ BUFF = 1488 # Unified constant
  */
 
 # Thread to listen one particular client
+  # @todo #339/DEV Prepare the meme list and attach them to the github, section .docs/accuracy/memes
+  #  As url they will be required for configuration of the each task.
 class ClientListener(Thread):
     def __init__(self, name: str, sock: socket.socket):
         super().__init__(daemon=True)
