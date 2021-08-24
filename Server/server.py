@@ -12,6 +12,10 @@ BUFF = 1488 # Unified constant
 # TODO #234:15m/DEV AAAAAAAAAA I boba
 
 /**
+ * @todo #228:5m/DEV ABOBA
+ */
+
+/**
  * @todo #234:15m/DEV This is something to do later
  *  in one of the next releases. I can't figure out
  *  how to implement it now, that's why the puzzle.
