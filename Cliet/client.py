@@ -2,8 +2,8 @@ import os
 import socket
 import sys
 
-# Unified constant
 # @todo #55:45min
+# Unified constant
 BUFF = 1488
 
 if len(sys.argv) != 4:
