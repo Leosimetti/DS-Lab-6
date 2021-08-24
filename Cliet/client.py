@@ -2,10 +2,7 @@ import os
 import socket
 import sys
 
-# @todo #55:45min
-# @todo #55:45min
-
-# @todo #1:45min
+ # @todo 155:45min
 
 
 # Unified constant
