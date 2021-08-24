@@ -20,7 +20,7 @@ BUFF = 1488 # Unified constant
  *  in one of the next releases. I can't figure out
  *  how to implement it now, that's why the puzzle.
  */
-
+django-csp = "3.7"  # @todo #2 Setup django-csp package.
 # Thread to listen one particular client
   # @todo #339/DEV Prepare the meme list and attach them to the github, section .docs/accuracy/memes
   #  As url they will be required for configuration of the each task.
